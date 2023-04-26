@@ -10,6 +10,10 @@ export default class App{
         this.port = port;
     }
 
-    
+    public listen(): void{
+        this.app.listen(this.port, () => {
+            console.log(`Listening on port ${this.port}...`);
+        })
+    }   
 
 }
