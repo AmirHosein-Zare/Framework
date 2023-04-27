@@ -15,7 +15,7 @@ const userSchema: Schema = new Schema<IUser>({
 
 const User = model<IUser>('User', userSchema);
 
-const validUser = async (data: IUser). => {
+const validUser = async (data: IUser) => {
     const schema: ObjectSchema = await object({
         username: Joi.string().trim(),
         password: Joi.string().trim()
