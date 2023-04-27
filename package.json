@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/config": "^3.3.0",
     "@types/express": "^4.17.17",
     "@types/joi": "^17.2.3",
     "@types/node": "^18.16.1",
