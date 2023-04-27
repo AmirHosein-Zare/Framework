@@ -1,5 +1,6 @@
 import {Schema, model} from "mongoose";
 import IUser from "./interface/IUser";
+import Joi, { object, ObjectSchema } from "joi";
 
 const userSchema: Schema = new Schema<IUser>({
     username: {
@@ -13,6 +14,15 @@ const userSchema: Schema = new Schema<IUser>({
 });
 
 const User = model<IUser>('User', userSchema);
+
+const validUser = async (data: IUser). => {
+    const schema: ObjectSchema = await object({
+        username: Joi.string().trim(),
+        password: Joi.string().trim()
+    }) 
+
+    return schema.validate(data);
+}
 
 export {
     userSchema,
