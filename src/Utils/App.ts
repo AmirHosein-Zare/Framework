@@ -1,5 +1,6 @@
 import { Express } from "express";
 import express from "express";
+import Database from "./Mongoose/db";
 
 export default class App{
     private app: Express;
@@ -16,4 +17,7 @@ export default class App{
         })
     }   
 
+    public connectToDb(): void{
+        new Database().connect();
+    }
 }
