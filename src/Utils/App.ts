@@ -1,6 +1,7 @@
 import { Express } from "express";
 import express from "express";
 import Database from "./Mongoose/db";
+import Router from "../Router/Router";
 
 export default class App{
     private app: Express;
@@ -9,6 +10,9 @@ export default class App{
     constructor(port: number | string){
         this.app = express();
         this.port = port;
+
+        this.initializeRouter();
+        this.connectToDb();
     }
 
     public listen(): void{
@@ -22,6 +26,6 @@ export default class App{
     }
 
     public initializeRouter(): void{
-        
+        new Router().init(this.app);
     }
 }
