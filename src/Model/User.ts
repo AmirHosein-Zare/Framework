@@ -26,5 +26,6 @@ const validUser = async (data: IUser) => {
 
 export {
     userSchema,
-    User
+    User,
+    validUser
 }
