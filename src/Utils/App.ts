@@ -20,4 +20,8 @@ export default class App{
     public connectToDb(): void{
         new Database().connect();
     }
+
+    public initializeRouter(): void{
+        
+    }
 }
