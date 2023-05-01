@@ -34,7 +34,7 @@ export default class UserController{
         if(!findUser) return res.status(404).send('User not found');
 
         const result = await validUser(req.body);
-        if(result.error) return res.status(404).send('Not Valid Data');
+        if(result.error) return res.status(400).send('Not Valid Data');
 
         const user = await User.findByIdAndUpdate(req.params.id, {
             $set: {
@@ -42,6 +42,15 @@ export default class UserController{
                 password: req.body.password
             }
         }, {new: true})
+
+        res.send(user);
+    }
+
+    async deleteUser(req: Request, res: Response): Promise<any>{
+        const findUser = await User.findById(req.params.id);
+        if(!findUser) return res.status(404).send('User not found');
+
+        const user = await User.findByIdAndRemove(req.params.id);
 
         res.send(user);
     }
