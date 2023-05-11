@@ -15,7 +15,10 @@ export default class UserController{
 
     private initializeRouter(){
         this.router.get(this.path, this.getAll);
-        
+        this.router.get(this.path + '/:id', this.getById);
+        this.router.post(this.path, this.createUser);
+        this.router.put(this.path + '/:id', this.editUser);
+        this.router.delete(this.path + '/:id', this.deleteUser);
     }
 
     async getAll(req: Request, res: Response): Promise<any>{
