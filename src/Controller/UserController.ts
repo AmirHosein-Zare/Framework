@@ -4,13 +4,10 @@ import { Router } from "express";
 import IController from "./interface/IController";
 
 export default class UserController implements IController{
-    router: Router;
-    path: string;
+    router = Router();
+    path = '/api/user';
 
-    constructor(router: Router){
-        this.path = '/api/user'
-        this.router = router;
-
+    constructor(){
         this.initializeRouter();
     }
 
