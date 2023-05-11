@@ -1,7 +1,23 @@
 import { Request, Response } from "express";
 import {User, validUser} from "../Model/User";
+import { Router } from "express";
 
 export default class UserController{
+    router: Router;
+    path: string;
+
+    constructor(router: Router){
+        this.path = '/api/user'
+        this.router = router;
+
+        this.initializeRouter();
+    }
+
+    private initializeRouter(){
+        this.router.get(this.path, this.getAll);
+        
+    }
+
     async getAll(req: Request, res: Response): Promise<any>{
         const users = await User.find();
         if(!users) return res.status(404).send('Not Found');
