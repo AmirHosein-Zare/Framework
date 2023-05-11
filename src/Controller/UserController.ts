@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import {User, validUser} from "../Model/User";
 import { Router } from "express";
+import IController from "./interface/IController";
 
-export default class UserController{
+export default class UserController implements IController{
     router: Router;
     path: string;
 
