@@ -2,6 +2,7 @@ import { Express } from "express";
 import express from "express";
 import Database from "./Mongoose/db";
 import Router from "../Router/Router";
+import Api from "../Router/api";
 
 export default class App{
     private app: Express;
@@ -27,5 +28,6 @@ export default class App{
 
     public initializeRouter(): void{
         new Router().init(this.app);
+        new Api().init(this.app);
     }
 }
